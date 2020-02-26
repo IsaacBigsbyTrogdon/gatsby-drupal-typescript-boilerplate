@@ -36,4 +36,4 @@ Opinionated [Gatsby](https://www.gatsbyjs.org/) with [TypeScript](https://www.ty
 * [CSS nano](https://github.com/cssnano/cssnano)
 * [Prettier](https://www.npmjs.com/package/prettier)
 * [Stylelint](https://www.npmjs.com/package/stylelint)
-* [CSS MQ Packer](https://www.npmjs.com/package/css-mqpacker)
+* [React Responsive](https://www.npmjs.com/package/react-responsive)

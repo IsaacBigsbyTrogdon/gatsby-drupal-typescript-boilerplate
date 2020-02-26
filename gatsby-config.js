@@ -1,6 +1,6 @@
-const cssnano = require('css-mqpacker');
+// const cssnano = require('css-mqpacker');
 const autoprefixer = require('autoprefixer');
-const mqPacker = require('css-mqpacker');
+// const mqPacker = require('css-mqpacker');
 
 module.exports = {
   siteMetadata: {
@@ -32,20 +32,20 @@ module.exports = {
       options: {
         postCssPlugins: [
           autoprefixer(),
-          cssnano({
-            preset: [
-              'default',
-              {
-                autoprefixer: true,
-                discardUnused: true,
-                mergeIdents: true,
-                zindex: true,
-              },
-            ],
-          }),
-          mqPacker({
-            sort: true,
-          }),
+          // cssnano({
+          //   preset: [
+          //     'default',
+          //     {
+          //       autoprefixer: true,
+          //       discardUnused: true,
+          //       mergeIdents: true,
+          //       zindex: true,
+          //     },
+          //   ],
+          // }),
+          // mqPacker({
+          //   sort: true,
+          // }),
         ],
       },
     },
