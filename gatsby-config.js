@@ -3,8 +3,8 @@ const cssnano = require('cssnano');
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby TypeScript Boilerplate',
-    siteUrl: `https://gatsby-typescript-boilerplate.netlify.com`,
+    title: 'Gatsby Drupal TypeScript Boilerplate',
+    siteUrl: `https://github.com/IsaacBigsbyTrogdon/gatsby-typescript-boilerplate`,
   },
   plugins: [
     {

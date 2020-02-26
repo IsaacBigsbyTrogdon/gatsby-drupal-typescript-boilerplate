@@ -17,6 +17,7 @@ Opinionated [Gatsby](https://www.gatsbyjs.org/) with [TypeScript](https://www.ty
 * [postcss](https://github.com/postcss)
 
 ## Gatsby Plugins
+* [gatsby-source-drupal](https://www.npmjs.com/package/gatsby-source-drupal)
 * [gatsby-plugin-favicon](https://www.npmjs.com/package/gatsby-plugin-favicon)
 * [gatsby-source-filesystem](https://www.npmjs.com/package/gatsby-source-filesystem)
 * [gatsby-plugin-offline](https://www.npmjs.com/package/gatsby-plugin-offline)
