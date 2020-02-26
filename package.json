@@ -75,7 +75,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dotist/gatsby-typescript-boilerplate"
+    "url": "https://github.com/IsaacBigsbyTrogdon/gatsby-typescript-boilerplate"
   },
   "type-check": "tsc --noEmit",
   "lint": "tslint --project ."

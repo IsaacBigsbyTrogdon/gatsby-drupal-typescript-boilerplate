@@ -1,6 +1,5 @@
-// const cssnano = require('css-mqpacker');
 const autoprefixer = require('autoprefixer');
-// const mqPacker = require('css-mqpacker');
+const cssnano = require('cssnano');
 
 module.exports = {
   siteMetadata: {
@@ -24,7 +23,7 @@ module.exports = {
         background_color: '#663399',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: './src/favicon.png', // This path is relative to the root of the site.
+        icon: './src/favicon.png',
       },
     },
     {
@@ -32,20 +31,17 @@ module.exports = {
       options: {
         postCssPlugins: [
           autoprefixer(),
-          // cssnano({
-          //   preset: [
-          //     'default',
-          //     {
-          //       autoprefixer: true,
-          //       discardUnused: true,
-          //       mergeIdents: true,
-          //       zindex: true,
-          //     },
-          //   ],
-          // }),
-          // mqPacker({
-          //   sort: true,
-          // }),
+          cssnano({
+            preset: [
+              'default',
+              {
+                autoprefixer: true,
+                discardUnused: true,
+                mergeIdents: true,
+                zindex: true,
+              },
+            ],
+          }),
         ],
       },
     },
