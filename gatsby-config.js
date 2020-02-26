@@ -15,6 +15,23 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-drupal`,
+      options: {
+        baseUrl: `https://live-contentacms.pantheonsite.io/`,
+        apiBase: `api`, // optional, defaults to `jsonapi`
+        // links: { # Use to filter which content to import.
+        //   articles: `https://ibt.best/api/articles`,
+        // },
+        // basicAuth: {
+        //   username: process.env.BASIC_AUTH_USERNAME,
+        //   password: process.env.BASIC_AUTH_PASSWORD,
+        // },
+        // params: {
+        //   "api-key": process.env.BASIC_AUTH_PASSWORD
+        // },
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'gatsby-typescript-boilerplate',
