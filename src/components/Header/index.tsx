@@ -1,25 +1,29 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import './Header.scss';
 
-interface HeaderProps {
+interface Props {
   siteTitle?: string;
 }
 
-class Header extends React.PureComponent<HeaderProps, {}> {
-  public render() {
-    const { siteTitle } = this.props;
-
-    return (
-      <header className="header">
-        <h1 className="header__title">
-          <Link to="/" className="header__link">
-            {siteTitle}
-          </Link>
-        </h1>
-      </header>
-    );
-  }
-}
+const Header: React.FunctionComponent<Props> = (props: Props) => {
+  const { siteTitle } = props;
+  return (
+    <header
+      style={{
+        padding: '0.1px 0',
+        backgroundColor: 'rebeccapurple',
+      }}
+    >
+      <div style={{
+        maxWidth: '960px',
+        margin: 'auto',
+        position: 'relative',
+      }}
+      >
+        <h1 style={{ color: 'white' }}>{siteTitle}</h1>
+      </div>
+    </header>
+  );
+};
 
 export default Header;

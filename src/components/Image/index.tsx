@@ -1,42 +1,35 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { useStaticQuery, graphql } from 'gatsby';
+import Img, { FluidObject } from 'gatsby-image';
 
-interface StaticQueryProps {
+interface Data {
   placeholderImage: {
     childImageSharp: {
-      fluid: object;
+      fluid: FluidObject;
     };
   };
 }
 
-class Image extends React.PureComponent<{}, {}> {
-  public render() {
-    return (
-      <StaticQuery
-        // tslint:disable-next-line:jsx-no-multiline-js
-        query={graphql`
-          query {
-            placeholderImage: file(
-              relativePath: { eq: "gatsby-typescript.jpg" }
-            ) {
-              childImageSharp {
-                fluid(maxWidth: 600) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
+const Image: React.FunctionComponent = () => {
+  const data: Data = useStaticQuery(graphql`
+    query {
+      placeholderImage: file(
+        relativePath: { eq: "gatsby-typescript.jpg" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 600) {
+            ...GatsbyImageSharpFluid
           }
-        `}
-        render={(data: StaticQueryProps) => (
-          <Img
-            fluid={data.placeholderImage.childImageSharp.fluid}
-            alt="Gatsby + TypeScript"
-          />
-        )}
-      />
-    );
-  }
-}
+        }
+      }
+    }
+  `);
+  return (
+    <Img
+      fluid={data.placeholderImage.childImageSharp.fluid}
+      alt="Gatsby + TypeScript + Drupal"
+    />
+  );
+};
 
 export default Image;
