@@ -1,59 +1,37 @@
-import React, { useState } from 'react';
+import React, { useGlobal } from 'reactn';
 import { useForm } from 'react-hook-form';
 import fetch from 'node-fetch';
 import './LoginForm.scss';
-import { useStateWithLocalStorage } from '../../hooks';
+import { useStateWithLocalStorage, now } from '../../hooks';
 
-interface FormData {
-  user: string;
-  password: string;
-}
-
-interface RequestOptions {
-  method: string;
-  headers: Record<string, string>;
-  body: string;
-}
-
-// interface ResponseData {
-//   current_user: {
-//     [key: string]: CurrentUser;
-//   };
-//   csrf_token: string;
-//   logout_token: string;
-// }
-
-// interface CurrentUser {
-//   uid: string;
-//   roles: Array<string>;
-//   name: string;
-// }
-
-const LoginForm: React.FunctionComponent = () => {
+const LoginForm = () => {
   const [, setApiSession] = useStateWithLocalStorage('apiSession');
-  const {
-    register, handleSubmit, errors, reset,
-  } = useForm<FormData>();
-  const [responseError, setResponseError] = useState(false);
-  const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
-  const onSubmit = (formData: FormData): void => {
-    setLoading(true);
+  const { register, handleSubmit, errors, reset } = useForm();
+  const [responseError, setResponseError] = useGlobal(false);
+  const [message, setMessage] = useGlobal('');
+  const [loading, setLoading] = useGlobal(false);
+  const onSubmit = formData => {
     if (responseError) setResponseError(false);
-    const doLogin = async (url: string, options: RequestOptions): Promise<void> => {
+    const doLogin = async (url, options) => {
+      setLoading(true);
       try {
-        const resp = await fetch(url, options).then((response) => {
-          setLoading(true);
-          return response;
-        });
+        const resp = await fetch(url, options)
+          .then(response => {
+            console.log(response);
+            return response;
+          })
+          .catch(error => {
+            console.log(error);
+          });
         const data = await resp.json();
+
         if (!data.current_user) {
           if (data.message) {
             // Wrong credentials, etc.
             reset();
             setResponseError(true);
-            setMessage(data.message);
             setLoading(false);
+            setMessage(data.message);
           } else {
             setResponseError(true);
             setMessage('Login response not recognized.');
@@ -61,35 +39,38 @@ const LoginForm: React.FunctionComponent = () => {
         } else if (!resp.ok) {
           // Response error.
           setResponseError(true);
-          console.log(resp);
+          setMessage('Some Error.');
+          setLoading(false);
           throw Error(resp.statusText);
         } else {
           // Success
           setLoading(false);
           setResponseError(false);
-          const string = JSON.stringify(data);
-          setApiSession<string>(string); // eslint-disable-line
-          // location.reload();
+          const string = JSON.stringify({
+            start_time: now(),
+            ...data
+          });
+          setApiSession(string);
+          location.replace('user');
           setMessage(`Success!${string}`);
         }
-        setLoading(false);
       } catch (error) {
-        console.log(error);
         setResponseError(true);
+        setLoading(false);
         setMessage(`Error caught: ${error}`);
       }
     };
     doLogin(`${process.env.GATSBY_API_URL}/user/login?_format=json`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(formData)
+      // body: getLocalStorage('sessionToken')
     });
   };
   return (
     <>
       {message ? <h3>{message}</h3> : ''}
       {loading ? <h4>Loading...</h4> : ''}
-      {/* Display Response Errors */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="name">
           User name

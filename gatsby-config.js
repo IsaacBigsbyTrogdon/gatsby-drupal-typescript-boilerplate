@@ -9,9 +9,8 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Drupal TypeScript Boilerplate',
-    siteUrl:
-      'https://github.com/IsaacBigsbyTrogdon/gatsby-typescript-boilerplate',
+    title: 'Gatsby Drupal Boilerplate',
+    siteUrl: 'https://github.com/IsaacBigsbyTrogdon/gatsby-drupal-boilerplate',
     description:
       "Single-origin coffee pork belly Pitchfork bitters master cleanse food truck semiotics authentic McSweeney's mumblecore."
   },
@@ -43,14 +42,10 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-typescript-boilerplate',
-        // eslint-disable-next-line @typescript-eslint/camelcase
+        name: 'gatsby-drupal-boilerplate',
         short_name: 'starter',
-        // eslint-disable-next-line @typescript-eslint/camelcase
         start_url: '/',
-        // eslint-disable-next-line @typescript-eslint/camelcase
         background_color: '#663399',
-        // eslint-disable-next-line @typescript-eslint/camelcase
         theme_color: '#663399',
         display: 'minimal-ui',
         icon: './src/favicon.png'
@@ -79,7 +74,6 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-typescript',
     'gatsby-transformer-sharp'
   ]
 };

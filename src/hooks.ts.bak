@@ -16,11 +16,11 @@ const useStateWithLocalStorage = (localStorageKey: string): Array<string | React
 // eslint-disable-next-line no-console
 const placeholder = (): void => console.log('placeholder');
 
-// const getStorage = ((key) => localStorage.getItem(key));
+const getLocalStorage = ((key: string): string | null => localStorage.getItem(key));
 
-// const setStorage = ((key, value) => localStorage.setItem(key, value));
+const setLocalStorage = ((key: string, value: string): void => localStorage.setItem(key, value));
 
-// const deleteStorage = ((key) => localStorage.setItem(key, ''));
+const deleteLocalStorage = ((key: string): void => localStorage.removeItem(key));
 
 // const useFetch = (url: string, options) => {
 //   fetch(url, options).then((response) => response.json())

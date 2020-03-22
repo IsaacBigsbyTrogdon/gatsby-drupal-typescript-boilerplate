@@ -4,7 +4,7 @@ import Layout from '../layout';
 import Image from '../components/Image';
 import './indexPage.scss';
 
-const page: React.FunctionComponent = () => (
+const page = () => (
   <Layout>
     <h1>With support for </h1>
     <figure className="indexPage__imgContainer">
